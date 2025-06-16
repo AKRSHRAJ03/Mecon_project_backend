@@ -18,7 +18,6 @@ class User(Base):
     # For password reset
     reset_token = Column(String, nullable=True)
     reset_token_expires = Column(DateTime(timezone=True), nullable=True)
-
 class RefreshToken(Base):
     __tablename__ = "refresh_tokens"
     
