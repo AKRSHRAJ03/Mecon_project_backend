@@ -7,8 +7,12 @@ services:
     plan: free
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 10000"
-    environment:
-      pythonVersion: 3.11.6
+    buildFilter:
+      paths:
+        - runtime.txt
+        - requirements.txt
+        - render.yaml
+        - app/**
     envVars:
       - key: DATABASE_URL
         value: postgresql://postgres:manish123@localhost/file_encryption_db
