@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: mecon-backend
+    env: python
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 10000"
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres:manish123@localhost/file_encryption_db
+      - key: SECRET_KEY
+        value: ac713e415f5aeefec65d28de07765bfddc611242e2ceebf4990018caca997126
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: "7"
+      - key: STORAGE_PATH
+        value: app/storage/encrypted_files
+      - key: MAIL_USERNAME
+        value: free.test100br@gmail.com
+      - key: MAIL_PASSWORD
+        value: wvsl qdsa iasc iabc
+      - key: MAIL_FROM
+        value: free.test100br@gmail.com
+      - key: MAIL_PORT
+        value: "587"
+      - key: MAIL_SERVER
+        value: smtp.gmail.com
+      - key: MAIL_TLS
+        value: "True"
+      - key: MAIL_SSL
+        value: "False"
